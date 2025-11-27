@@ -54,6 +54,9 @@ A **Doubly Linked List (DLL)** is a linear data structure where each element (no
 | **Reverse Traversal** | Not possible | Possible |
 
 ---
+
+## 🧩 Structure & Components
+
 ┌─────────┐ ┌─────────┐ ┌─────────┐
 │ prev │ │ prev │ │ prev │
 │ pointer │◄───┤ pointer │◄───┤ pointer │
@@ -64,10 +67,6 @@ A **Doubly Linked List (DLL)** is a linear data structure where each element (no
 │ pointer │ │ pointer │ │ pointer │
 └─────────┘ └─────────┘ └─────────┘
 
-
-## 🧩 Structure & Components
-
-### 📦 Node Structure
 
 Each node consists of:
 1. **Data field**: Stores the actual value
@@ -83,14 +82,10 @@ typedef struct Node {
     struct Node* prev;
 } Node;
 
-The list is maintained with:
-
-Head pointer: Points to the first node
-Tail pointer (optional): Points to the last node for O(1) end operations
-
 ⚡ Key Operations
 ➕ Insertion Operations
 1. Insert at Beginning
+
 Node* insertAtBeginning(Node* head, int value) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     newNode->data = value;
@@ -123,7 +118,9 @@ Node* insertAtEnd(Node* head, int value) {
     newNode->prev = current;
     return head;
 }
+
 3. Insert After a Node
+
 void insertAfter(Node* prevNode, int value) {
     if (prevNode == NULL) return;
     
@@ -137,19 +134,6 @@ void insertAfter(Node* prevNode, int value) {
     
     prevNode->next = newNode;
 }
-➖ Deletion Operations
-1. Delete from Beginning
-Node* deleteFromBeginning(Node* head) {
-    if (head == NULL) return NULL;
-    
-    Node* temp = head;
-    head = head->next;
-    
-    if (head != NULL)
-        head->prev = NULL;
-    
-    free(temp);
-    return head;
-}
 
 
+### 📦 Node Structure
