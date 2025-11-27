@@ -753,5 +753,5 @@ These resources go deeper into linked lists, time‑complexity analysis, and rea
 
 ---
 
-> You can drop this file directly as `README.md` into a GitHub repository about linked lists (SLL & DLL).  
-> Add your own implementations, tests, and images as needed. Happy coding! 😄
+-> إن وجدت أي خطأ أو أردت إضافة ميزة، لا تتردد في المساهمة
+Contributions are always welcome!
