@@ -1,757 +1,710 @@
-# Singly & Doubly Linked Lists (SLL & DLL)
+# 📸 Adding Images & GIFs to Your README
 
-> A clean, practical guide to linked lists in C/C++ with code, diagrams (via Mermaid), time-complexity tables, and real‑world use cases.
-
----
-
-## 📚 Table of Contents
-
-1. [What Is a Linked List?](#-what-is-a-linked-list)
-2. [Singly Linked List (SLL)](#-singly-linked-list-sll)
-   - [Node Structure](#node-structure-sll)
-   - [Core Operations](#core-operations-sll)
-   - [Full Example – SLL in C++](#full-example--sll-in-c)
-3. [Doubly Linked List (DLL)](#-doubly-linked-list-dll)
-   - [Node Structure](#node-structure-dll)
-   - [Core Operations](#core-operations-dll)
-   - [Full Example – DLL in C++](#full-example--dll-in-c)
-4. [Circular Doubly Linked List with Sentinel Node](#-circular-doubly-linked-list-with-sentinel-node)
-5. [Time Complexity Summary](#-time-complexity-summary)
-6. [SLL vs DLL – When to Use Which?](#-sll-vs-dll--when-to-use-which)
-7. [Real‑World Applications](#-realworld-applications)
-8. [Bonus: LRU Cache Using DLL + Hash Map](#-bonus-lru-cache-using-dll--hash-map)
-9. [References & Further Reading](#-references--further-reading)
+Complete guide to enhance your Linked List README with visual content
 
 ---
 
-## 🧩 What Is a Linked List?
+## 🎬 GIF Resources & Creation Guide
 
-A **linked list** is a linear data structure where elements (called **nodes**) are stored in separate memory locations and connected using pointers.
+### Pre-made GIF Resources
 
-Each node typically contains:
+You can download existing GIFs from these sites:
 
-- `data` – the actual value.
-- one or more pointer(s) to the next / previous node.
+#### **1. Imgur - Animation Repository**
+```
+Search for:
+- "Linked List Insert Animation"
+- "Singly Linked List GIF"
+- "Doubly Linked List Animation"
+- "Linked List Operations"
 
-Unlike arrays:
-
-- Size is **dynamic** – you can grow/shrink at runtime.
-- Insertions and deletions at known positions can be **O(1)** (no shifting).
-- Access by index is **O(n)** (no random access).
-
----
-
-## 🔗 Singly Linked List (SLL)
-
-A **Singly Linked List** is a linked list where each node stores:
-
-- `data`
-- pointer to **next** node only
-
-Traversal is **forward only** (from head to tail).
-
-### Node Structure (SLL)
-
-```c
-// C version
-typedef struct Node {
-    int data;
-    struct Node* next;
-} Node;
+Website: https://imgur.com
+Steps:
+1. Search for linked list GIFs
+2. Download the GIF
+3. Upload to your GitHub repo in /images folder
+4. Reference with markdown syntax
 ```
 
-```cpp
-// C++ version
-struct Node {
-    int data;
-    Node* next;
-    Node(int value) : data(value), next(nullptr) {}
-};
+#### **2. VisuAlgo - Data Structure Visualizer**
+```
+Website: https://visualgo.net/en/list
+
+Features:
+- Interactive linked list animations
+- Step-by-step operations
+- Screenshot capability
+- Can record screen to create GIF
+
+Steps:
+1. Visit visualgo.net
+2. Select "Linked List"
+3. Perform operations
+4. Record screen (use OBS, Asciinema, or Gifify)
+5. Convert to GIF
 ```
 
-### Core Operations (SLL)
-
-We assume we keep a pointer `head` to the first node.
-
-#### 1. Traversal
-
-```cpp
-void traverse(Node* head) {
-    Node* cur = head;
-    while (cur != nullptr) {
-        std::cout << cur->data << " ";
-        cur = cur->next;
-    }
-    std::cout << "\n";
-}
+#### **3. GeeksforGeeks - Video Tutorials**
 ```
+Website: https://www.geeksforgeeks.org/data-structures/linked-list/
 
-#### 2. Insert at Beginning – O(1)
-
-```cpp
-void push_front(Node*& head, int value) {
-    Node* node = new Node(value);
-    node->next = head;
-    head = node;
-}
-```
-
-#### 3. Insert at End – O(n) (without tail pointer)
-
-```cpp
-void push_back(Node*& head, int value) {
-    Node* node = new Node(value);
-    if (!head) {
-        head = node;
-        return;
-    }
-    Node* cur = head;
-    while (cur->next) cur = cur->next;
-    cur->next = node;
-}
-```
-
-> If you maintain a separate `tail` pointer, `push_back` becomes **O(1)**.
-
-#### 4. Delete from Beginning – O(1)
-
-```cpp
-void pop_front(Node*& head) {
-    if (!head) return;
-    Node* tmp = head;
-    head = head->next;
-    delete tmp;
-}
-```
-
-#### 5. Delete First Occurrence of a Value – O(n)
-
-```cpp
-void delete_value(Node*& head, int value) {
-    if (!head) return;
-
-    if (head->data == value) {
-        pop_front(head);
-        return;
-    }
-
-    Node* cur = head;
-    while (cur->next && cur->next->data != value)
-        cur = cur->next;
-
-    if (cur->next) {
-        Node* tmp = cur->next;
-        cur->next = tmp->next;
-        delete tmp;
-    }
-}
-```
-
-#### 6. Find Middle Node – O(n)
-
-Using slow & fast pointer technique:
-
-```cpp
-Node* middle(Node* head) {
-    if (!head) return nullptr;
-    Node* slow = head;
-    Node* fast = head;
-    while (fast && fast->next) {
-        slow = slow->next;
-        fast = fast->next->next;
-    }
-    return slow; // middle
-}
-```
-
-#### 7. Reverse List – O(n)
-
-```cpp
-Node* reverse(Node* head) {
-    Node* prev = nullptr;
-    Node* cur  = head;
-    while (cur) {
-        Node* nxt = cur->next;
-        cur->next = prev;
-        prev = cur;
-        cur = nxt;
-    }
-    return prev; // new head
-}
+Features:
+- Existing animations
+- Clear diagrams
+- Step-by-step explanations
+- Can screenshot and compile into GIF
 ```
 
 ---
 
-### Full Example – SLL in C++
+## 🎥 Creating Your Own GIFs
 
-```cpp
-#include <bits/stdc++.h>
-using namespace std;
+### **Method 1: Using Asciinema (Terminal Recording)**
 
-struct Node {
-    int data;
-    Node* next;
-    Node(int v) : data(v), next(nullptr) {}
-};
+```bash
+# Install asciinema
+pip install asciinema
 
-class SinglyLinkedList {
-    Node* head;
+# Record your terminal session
+asciinema rec demo.cast
 
-public:
-    SinglyLinkedList() : head(nullptr) {}
+# Then convert to GIF
+# Install ImageMagick first
+sudo apt-get install imagemagick
 
-    ~SinglyLinkedList() {
-        while (head) {
-            Node* tmp = head;
-            head = head->next;
-            delete tmp;
-        }
-    }
+# Convert to GIF
+convert -delay 50 -dispose Background demo.* demo.gif
+```
 
-    bool empty() const { return head == nullptr; }
+**Example: Record SLL Insertion**
+```
+1. Start recording: asciinema rec
+2. Run your linked list program
+3. Perform insert operations
+4. Show output
+5. Stop recording
+6. Convert to GIF
+```
 
-    void push_front(int v) {
-        Node* node = new Node(v);
-        node->next = head;
-        head = node;
-    }
+### **Method 2: Using Screen Recording + Gifify**
 
-    void push_back(int v) {
-        Node* node = new Node(v);
-        if (!head) {
-            head = node;
-            return;
-        }
-        Node* cur = head;
-        while (cur->next) cur = cur->next;
-        cur->next = node;
-    }
+```bash
+# Install Gifify
+npm install -g gifify
 
-    void pop_front() {
-        if (!head) return;
-        Node* tmp = head;
-        head = head->next;
-        delete tmp;
-    }
+# Or use ffmpeg directly
+ffmpeg -i input.mp4 -vf fps=10 output.gif
 
-    void delete_value(int v) {
-        if (!head) return;
-        if (head->data == v) {
-            pop_front();
-            return;
-        }
-        Node* cur = head;
-        while (cur->next && cur->next->data != v)
-            cur = cur->next;
-        if (cur->next) {
-            Node* tmp = cur->next;
-            cur->next = tmp->next;
-            delete tmp;
-        }
-    }
+# Better quality with optimization
+gifsicle -i output.gif -O3 -o optimized.gif
+```
 
-    void print() const {
-        Node* cur = head;
-        while (cur) {
-            cout << cur->data << " ";
-            cur = cur->next;
-        }
-        cout << "\n";
-    }
-};
+**Steps:**
+1. Open screen recorder (OBS, SimpleScreenRecorder)
+2. Run your C++ linked list program
+3. Perform operations (insert, delete, traverse)
+4. Save video (MP4 format)
+5. Convert to GIF using ffmpeg or Gifify
+6. Upload to GitHub
+
+### **Method 3: Using OBS Studio (Recommended)**
+
+```
+OBS Setup:
+1. Download OBS Studio: https://obsproject.com/
+2. Create new scene
+3. Add display/window capture
+4. Start recording
+5. Run your linked list program
+6. Perform operations
+7. Stop recording
+8. Export as MP4
+9. Convert to GIF using ffmpeg
+
+Command:
+ffmpeg -i recording.mp4 -vf "fps=2" output.gif
 ```
 
 ---
 
-## 🔁 Doubly Linked List (DLL)
+## 📁 Repository Image Structure
 
-A **Doubly Linked List** stores, for each node:
+### Organize Your Images
 
-- `data`
-- pointer to **next** node
-- pointer to **previous** node
-
-This allows **bidirectional traversal** and easy deletion of an arbitrary node when you already have a pointer to it.
-
-### Node Structure (DLL)
-
-```cpp
-struct DNode {
-    int data;
-    DNode* prev;
-    DNode* next;
-    DNode(int v) : data(v), prev(nullptr), next(nullptr) {}
-};
+```
+linked-list/
+├── README.md
+├── images/                          ← Create this folder
+│   ├── sll-structure.png
+│   ├── dll-structure.png
+│   ├── sll-insert.gif
+│   ├── sll-delete.gif
+│   ├── dll-insert.gif
+│   ├── dll-delete.gif
+│   ├── sll-vs-dll.png
+│   ├── operations-comparison.png
+│   ├── memory-layout.png
+│   └── real-world-uses.png
+├── diagrams/
+│   ├── node-structure.txt
+│   └── pointer-logic.txt
+└── src/
+    ├── srcSinglyLinkedList.cpp
+    └── srcDoublyLinkedList.cpp
 ```
 
-We usually keep both:
+### Create images folder
 
-- `head` – first node
-- `tail` – last node (for O(1) insert/delete at end)
-
-### Core Operations (DLL)
-
-#### 1. Traverse Forward
-
-```cpp
-void traverse_forward(DNode* head) {
-    for (DNode* cur = head; cur != nullptr; cur = cur->next)
-        std::cout << cur->data << " ";
-    std::cout << "\n";
-}
-```
-
-#### 2. Traverse Backward (using `tail`)
-
-```cpp
-void traverse_backward(DNode* tail) {
-    for (DNode* cur = tail; cur != nullptr; cur = cur->prev)
-        std::cout << cur->data << " ";
-    std::cout << "\n";
-}
-```
-
-#### 3. Insert at Beginning – O(1)
-
-```cpp
-void dll_push_front(DNode*& head, DNode*& tail, int value) {
-    DNode* node = new DNode(value);
-    node->next = head;
-    if (head) head->prev = node;
-    else      tail = node; // list was empty
-    head = node;
-}
-```
-
-#### 4. Insert at End – O(1) with `tail`
-
-```cpp
-void dll_push_back(DNode*& head, DNode*& tail, int value) {
-    DNode* node = new DNode(value);
-    node->prev = tail;
-    if (tail) tail->next = node;
-    else      head = node; // empty
-    tail = node;
-}
-```
-
-#### 5. Insert After a Given Node – O(1)
-
-```cpp
-void dll_insert_after(DNode* pos, int value, DNode*& tail) {
-    if (!pos) return;
-    DNode* node = new DNode(value);
-    node->next = pos->next;
-    node->prev = pos;
-    if (pos->next) pos->next->prev = node;
-    else           tail = node; // inserted at end
-    pos->next = node;
-}
-```
-
-#### 6. Delete from Beginning – O(1)
-
-```cpp
-void dll_pop_front(DNode*& head, DNode*& tail) {
-    if (!head) return;
-    DNode* tmp = head;
-    head = head->next;
-    if (head) head->prev = nullptr;
-    else      tail = nullptr; // list became empty
-    delete tmp;
-}
-```
-
-#### 7. Delete from End – O(1)
-
-```cpp
-void dll_pop_back(DNode*& head, DNode*& tail) {
-    if (!tail) return;
-    DNode* tmp = tail;
-    tail = tail->prev;
-    if (tail) tail->next = nullptr;
-    else      head = nullptr;
-    delete tmp;
-}
-```
-
-#### 8. Delete Specific Node When You Already Have Pointer – O(1)
-
-```cpp
-void dll_delete_node(DNode*& head, DNode*& tail, DNode* del) {
-    if (!del) return;
-
-    if (del == head) head = del->next;
-    if (del == tail) tail = del->prev;
-
-    if (del->prev) del->prev->next = del->next;
-    if (del->next) del->next->prev = del->prev;
-
-    delete del;
-}
+```bash
+mkdir images
+mkdir diagrams
 ```
 
 ---
 
-### Full Example – DLL in C++
+## 🖼️ Markdown Syntax for Images
 
-```cpp
-#include <bits/stdc++.h>
-using namespace std;
+### **Basic Image Syntax**
 
-struct DNode {
-    int data;
-    DNode* prev;
-    DNode* next;
-    DNode(int v) : data(v), prev(nullptr), next(nullptr) {}
-};
+```markdown
+![Alt text](path/to/image.png)
+![Alt text](url/to/image.gif)
+```
 
-class DoublyLinkedList {
-    DNode* head;
-    DNode* tail;
+### **Image with Width Control**
 
-public:
-    DoublyLinkedList() : head(nullptr), tail(nullptr) {}
+```markdown
+![SLL Structure](images/sll-structure.png){: width="600px"}
 
-    ~DoublyLinkedList() {
-        while (head) {
-            DNode* tmp = head;
-            head = head->next;
-            delete tmp;
-        }
-    }
+<!-- Or HTML syntax for more control -->
+<img src="images/sll-structure.png" width="600" alt="SLL Structure">
+```
 
-    bool empty() const { return head == nullptr; }
+### **Centered Image**
 
-    void push_front(int v) {
-        DNode* node = new DNode(v);
-        node->next = head;
-        if (head) head->prev = node;
-        else      tail = node;
-        head = node;
-    }
+```markdown
+<div align="center">
+  <img src="images/sll-structure.png" width="500" alt="SLL Structure">
+  <p><strong>Figure 1: Singly Linked List Structure</strong></p>
+</div>
+```
 
-    void push_back(int v) {
-        DNode* node = new DNode(v);
-        node->prev = tail;
-        if (tail) tail->next = node;
-        else      head = node;
-        tail = node;
-    }
+### **Multiple Images Side by Side**
 
-    void pop_front() {
-        if (!head) return;
-        DNode* tmp = head;
-        head = head->next;
-        if (head) head->prev = nullptr;
-        else      tail = nullptr;
-        delete tmp;
-    }
-
-    void pop_back() {
-        if (!tail) return;
-        DNode* tmp = tail;
-        tail = tail->prev;
-        if (tail) tail->next = nullptr;
-        else      head = nullptr;
-        delete tmp;
-    }
-
-    // delete first occurrence of value
-    void delete_value(int v) {
-        DNode* cur = head;
-        while (cur && cur->data != v) cur = cur->next;
-        if (!cur) return;
-        if (cur == head) head = cur->next;
-        if (cur == tail) tail = cur->prev;
-        if (cur->prev) cur->prev->next = cur->next;
-        if (cur->next) cur->next->prev = cur->prev;
-        delete cur;
-    }
-
-    void print_forward() const {
-        DNode* cur = head;
-        while (cur) {
-            cout << cur->data << " ";
-            cur = cur->next;
-        }
-        cout << "\n";
-    }
-
-    void print_backward() const {
-        DNode* cur = tail;
-        while (cur) {
-            cout << cur->data << " ";
-            cur = cur->prev;
-        }
-        cout << "\n";
-    }
-};
+```markdown
+<div align="center">
+  <img src="images/sll-structure.png" width="45%" alt="SLL">
+  <img src="images/dll-structure.png" width="45%" alt="DLL">
+</div>
 ```
 
 ---
 
-## 🔄 Circular Doubly Linked List with Sentinel Node
+## 📸 Specific Images for Linked List README
 
-A common **pro** implementation for lists is:
+### **Images You Should Create/Add**
 
-- use a **sentinel (dummy) node** that acts as both head and tail marker.
-- make the list **circular**: last node points back to sentinel, sentinel points to first/last.
+#### **1. SLL Structure Diagram**
+```
+File: images/sll-structure.png
 
-This removes many edge cases (empty list, deletion of head/tail, etc.).
+Should show:
+- HEAD pointer
+- Multiple nodes
+- Each node with Data and Next pointer
+- NULL at the end
+- Arrows showing connections
+```
 
-### Diagram (Mermaid)
+**Markdown Usage:**
+```markdown
+### Singly Linked List Structure
+
+<div align="center">
+  <img src="images/sll-structure.png" width="600" alt="Singly Linked List">
+</div>
+
+```
+
+#### **2. DLL Structure Diagram**
+```
+File: images/dll-structure.png
+
+Should show:
+- HEAD pointer
+- TAIL pointer
+- Nodes with Prev and Next pointers
+- Bidirectional arrows
+- NULL at both ends
+```
+
+**Markdown Usage:**
+```markdown
+### Doubly Linked List Structure
+
+<div align="center">
+  <img src="images/dll-structure.png" width="600" alt="Doubly Linked List">
+</div>
+
+```
+
+#### **3. SLL Insert Operation GIF**
+```
+File: images/sll-insert-operation.gif
+
+Animation shows:
+Frame 1: Initial list (5 → 10 → 15)
+Frame 2: New node created (7)
+Frame 3: New node pointer set
+Frame 4: Previous node pointer updated
+Frame 5: Final result (5 → 7 → 10 → 15)
+```
+
+**Markdown Usage:**
+```markdown
+### Insert Operation in SLL
+
+<div align="center">
+  <img src="images/sll-insert-operation.gif" width="600" alt="SLL Insert">
+</div>
+
+```
+
+#### **4. DLL Delete Operation GIF**
+```
+File: images/dll-delete-operation.gif
+
+Animation shows:
+Frame 1: Initial list with node to delete
+Frame 2: Prev and Next nodes identified
+Frame 3: Pointers being rerouted
+Frame 4: Node deletion
+Frame 5: Final list without deleted node
+```
+
+**Markdown Usage:**
+```markdown
+### Delete Operation in DLL
+
+<div align="center">
+  <img src="images/dll-delete-operation.gif" width="600" alt="DLL Delete">
+</div>
+
+```
+
+#### **5. Memory Layout Comparison**
+```
+File: images/memory-layout.png
+
+Should show:
+- Physical memory addresses
+- Where SLL nodes are stored
+- Where DLL nodes are stored
+- How pointers connect them
+```
+
+**Markdown Usage:**
+```markdown
+<img src="images/memory-layout.png" width="700" alt="Memory Layout">
+```
+
+#### **6. Comparison Table Visual**
+```
+File: images/sll-vs-dll-comparison.png
+
+Should show:
+- Side-by-side comparison
+- Operation times
+- Memory usage
+- Feature comparison
+```
+
+---
+
+## 🎬 Embedding Videos
+
+### **YouTube Video Embedding**
+
+```markdown
+### Video Tutorial: Understanding Linked Lists
+
+<div align="center">
+  
+[![Watch the video](https://img.youtube.com/vi/VIDEO_ID/hqdefault.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
+
+Click the image above to watch on YouTube
+
+</div>
+```
+
+**Replace VIDEO_ID with actual YouTube video ID**
+
+### **Multiple Video Links**
+
+```markdown
+### 📚 Essential Video Tutorials
+
+| Topic | Link | Duration |
+|-------|------|----------|
+| SLL Basics | [Watch](https://youtube.com/...) | 15 min |
+| DLL Operations | [Watch](https://youtube.com/...) | 20 min |
+| Interview Problems | [Watch](https://youtube.com/...) | 30 min |
+```
+
+---
+
+## 📊 Creating Diagrams with Online Tools
+
+### **Tool 1: Draw.io (Recommended)**
+
+```
+Website: https://draw.io
+
+Steps:
+1. Go to draw.io
+2. Create new diagram
+3. Draw linked list structure
+4. Use shapes and connectors
+5. Export as PNG/SVG
+6. Save to images/ folder
+```
+
+### **Tool 2: Excalidraw**
+
+```
+Website: https://excalidraw.com
+
+Features:
+- Hand-drawn style diagrams
+- Easy to use
+- Free
+- Can embed directly or export
+
+Steps:
+1. Go to excalidraw.com
+2. Draw your linked list
+3. Export as PNG
+4. Upload to GitHub
+```
+
+### **Tool 3: Mermaid (GitHub Native)**
+
+```markdown
+### SLL Diagram using Mermaid
 
 ```mermaid
-flowchart LR
-    S((sentinel))
-    A((node A))
-    B((node B))
-    C((node C))
-
-    S --- A
-    A --- B
-    B --- C
-    C --- S
-
-    S <---> A
-    A <---> B
-    B <---> C
-    C <---> S
+graph LR
+    A["HEAD"] --> B["Node 1 (5)"]
+    B -->|next| C["Node 2 (10)"]
+    C -->|next| D["Node 3 (15)"]
+    D -->|next| E["NULL"]
 ```
 
-### Minimal Implementation (C)
-
-```c
-typedef struct CNode {
-    int data;
-    struct CNode* prev;
-    struct CNode* next;
-} CNode;
-
-CNode* create_sentinel(void) {
-    CNode* s = (CNode*)malloc(sizeof(CNode));
-    s->data = 0;      // unused
-    s->next = s;
-    s->prev = s;
-    return s;
-}
-
-bool is_empty(CNode* s) {
-    return s->next == s; // self-loop
-}
-
-void insert_after(CNode* pos, int value) {
-    CNode* n = (CNode*)malloc(sizeof(CNode));
-    n->data = value;
-    n->next = pos->next;
-    n->prev = pos;
-    pos->next->prev = n;
-    pos->next = n;
-}
-
-void erase(CNode* node) {
-    node->prev->next = node->next;
-    node->next->prev = node->prev;
-    free(node);
-}
+This renders directly on GitHub!
 ```
 
 ---
 
-## ⏱ Time Complexity Summary
+## 🖥️ Live Example: Adding Images to Your README
 
-### Basic Operations
+### **Complete Section with Images**
 
-| Operation                         | Singly Linked List | Doubly Linked List | Notes |
-|----------------------------------|---------------------|--------------------|-------|
-| Access by index                  | O(n)               | O(n)               | Need to traverse from head. |
-| Insert at beginning              | O(1)               | O(1)               | Just relink a few pointers. |
-| Insert at end (with tail)        | O(1)               | O(1)               | Without tail → O(n). |
-| Insert after a given node        | O(1)               | O(1)               | Position already known. |
-| Delete from beginning            | O(1)               | O(1)               | Update head; DLL also updates `prev`. |
-| Delete from end (with tail)      | O(n)\*             | O(1)               | SLL needs previous node; DLL uses `tail`. |
-| Delete a given node (have ptr)   | O(n)\*             | O(1)               | SLL must find previous node. |
-| Search by value                  | O(n)               | O(n)               | Linear scan. |
-| Reverse traversal                | Not possible       | O(n)               | Follow `prev` from tail. |
+```markdown
+## 🔗 Visual Guide: Singly Linked List
 
-\*You can make SLL delete-from-end O(1) only with extra tricks (e.g., storing previous pointer externally), but standard SLL uses O(n).
+### Structure
 
----
+<div align="center">
+  <img src="images/sll-structure.png" width="700" alt="SLL Structure">
+  <p><strong>Figure: Memory Layout of Singly Linked List</strong></p>
+</div>
 
-## ⚖ SLL vs DLL – When to Use Which?
+The image above shows how nodes are connected with `next` pointers.
 
-### Advantages of Singly Linked List
+### Insert Operation Animation
 
-- Uses **less memory** (one pointer per node).
-- Simpler pointer logic and implementation.
-- Good when:
-  - Only **forward traversal** is needed.
-  - Memory is tight.
-  - Operations are mostly at the front.
+<div align="center">
+  <img src="images/sll-insert.gif" width="700" alt="Insert Operation">
+  <p><strong>Animation: Inserting element 7 at position 1</strong></p>
+</div>
 
-### Advantages of Doubly Linked List
+### Delete Operation Animation
 
-- **Bidirectional traversal** (forward and backward).
-- Deleting a known node is **O(1)** (no need for previous pointer).
-- Easy **insert/delete at both ends** with head & tail.
-- Natural fit for:
-  - undo/redo stacks
-  - browser history
-  - playlists
-  - deques
-  - LRU caches
+<div align="center">
+  <img src="images/sll-delete.gif" width="700" alt="Delete Operation">
+  <p><strong>Animation: Deleting element 10</strong></p>
+</div>
 
-### Quick Decision Matrix
+### Video Tutorial
 
-| Use Case                                          | SLL  | DLL  |
-|---------------------------------------------------|------|------|
-| Only forward traversal                            | ✅ Good | ⚠ Extra memory |
-| Need backward traversal                           | ❌ No  | ✅ Essential |
-| Frequent insert/delete at both ends               | ⚠ With care | ✅ Excellent |
-| LRU / MRU cache                                   | ❌ Hard | ✅ Standard |
-| Memory is critical                                | ✅ Better | ❌ Heavier |
-| Implementation simplicity                         | ✅ Simpler | ⚠ More complex |
+<div align="center">
+  
+[![SLL Tutorial](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
+**Watch: Complete SLL Tutorial (15 minutes)**
+
+</div>
+
+```
 
 ---
 
-## 🌍 Real‑World Applications
+## 📥 Uploading Images to GitHub
 
-Some classic places where **DLL** is used in real systems: commentaryThese bullets are informational; they aren't rendered as citations in the README itself.
+### **Method 1: Direct Upload (Easiest)**
 
-- **Browser History Management**  
-  Forward/backward navigation through visited pages, each page is a node in DLL. commentaryInspired by typical explanations like those on GeeksforGeeks.
-- **Text Editor Undo/Redo**  
-  Each edit is a node; you can move backward (undo) and forward (redo) efficiently.
-- **Music Playlist / Media Players**  
-  Navigate to previous/next song, support dynamic insertion/removal.
-- **Deque (Double‑Ended Queue)**  
-  Insert / delete at both ends in O(1) using head & tail of DLL.
-- **Operating‑System Schedulers & Memory Management**  
-  Many kernels keep processes, tasks, or free memory blocks in doubly linked lists.
-- **LRU / MRU Caches**  
-  Combine DLL + hash map to maintain usage order and allow O(1) updates and eviction.
+```
+Steps:
+1. Go to your GitHub repository
+2. Click "Add file" → "Upload files"
+3. Drag and drop images folder
+4. Commit changes
+5. Update README with image paths
+```
 
-Singly linked lists also appear in:
+### **Method 2: Using Git Command**
 
-- adjacency lists in graphs  
-- simple queues / stacks  
-- functional programming lists
+```bash
+# Create images folder
+mkdir images
+
+# Add your image files
+cp /path/to/image.png images/
+
+# Commit and push
+git add images/
+git commit -m "Add linked list diagrams and GIFs"
+git push origin main
+```
+
+### **Method 3: Using GitHub Web Interface**
+
+```
+1. In GitHub, go to your repo
+2. Click "Add file" dropdown
+3. Select "Upload files"
+4. Select image files from your computer
+5. Write commit message
+6. Commit to main branch
+```
 
 ---
 
-## 💡 Bonus: LRU Cache Using DLL + Hash Map
+## 🎨 Image Optimization Tips
 
-In many interview problems (e.g., **LRU Cache** on LeetCode), the standard pattern is:
+### **Reduce File Size**
 
-- **Doubly Linked List**: stores `(key, value)` nodes ordered from **most recently used** (head) to **least recently used** (tail).
-- **Hash Map**: maps `key → pointer to node` for O(1) access.
+```bash
+# For PNG files
+optipng -o2 image.png
 
-Operations:
+# For GIFs
+gifsicle -O3 image.gif -o image-optimized.gif
 
-- **get(key)**:
-  - if not in map → return `-1`
-  - move node to **head** (most recently used) and return value
-- **put(key, value)**:
-  - if key already exists → update value and move node to head
-  - else create node at head
-  - if capacity exceeded → remove node at tail and erase from map
+# For JPG files
+jpegoptim --max=85 image.jpg
+```
 
-### Minimal C++ Sketch
+### **Recommended Sizes**
 
+```
+Full-width image:    700-800px
+Side-by-side:        300-400px each
+Small inline images: 150-200px
+GIFs:                600-700px (to show movement)
+```
+
+### **Format Recommendations**
+
+```
+PNG:  Diagrams, screenshots (smaller)
+JPG:  Photos, complex images
+GIF:  Animations, operations
+SVG:  Scalable diagrams (best quality)
+```
+
+---
+
+## 🔗 External Image Hosting (Alternative)
+
+If you want to host images externally:
+
+### **GitHub Image Hosting**
+
+```markdown
+![Image](https://raw.githubusercontent.com/username/repo/branch/images/image.png)
+```
+
+### **Imgur Hosting**
+
+```markdown
+![Image](https://imgur.com/XXXXXX.png)
+```
+
+### **CloudFlare Images**
+
+```markdown
+![Image](https://yourcdn.com/image.png)
+```
+
+---
+
+## 📋 Complete Image Checklist
+
+```
+Create these images for complete README:
+
+□ sll-structure.png (basic structure diagram)
+□ dll-structure.png (basic structure diagram)
+□ sll-insert-operation.gif (animation)
+□ sll-delete-operation.gif (animation)
+□ dll-insert-operation.gif (animation)
+□ dll-delete-operation.gif (animation)
+□ dll-traverse-backward.gif (animation)
+□ memory-layout.png (how pointers connect)
+□ sll-vs-dll-comparison.png (comparison table)
+□ real-world-examples.png (use cases visualization)
+□ complexity-chart.png (time complexity visual)
+□ operations-flowchart.png (decision tree for operations)
+
+Optional:
+□ node-structure.png (detailed node breakdown)
+□ linked-list-lifecycle.gif (creation to deletion)
+□ browser-history-example.png (real-world use)
+□ lru-cache-animation.gif (DLL use case)
+```
+
+---
+
+## 📝 Example: Final README Section with Images
+
+```markdown
+# 🔗 Singly Linked List - Visual Guide
+
+## Structure & Memory Layout
+
+<div align="center">
+  <img src="images/sll-structure.png" width="700" alt="SLL Structure">
+  <p>
+    <strong>Figure 1: Singly Linked List Structure</strong><br>
+    Each node contains data and a pointer to the next node
+  </p>
+</div>
+
+## Key Operations
+
+### Insert at Head
+
+<div align="center">
+  <img src="images/sll-insert-head.gif" width="600" alt="Insert at Head">
+  <p><strong>Inserting at head: O(1) time</strong></p>
+</div>
+
+**Code:**
 ```cpp
-class LRUCache {
-    struct Node {
-        int key, value;
-        Node *prev, *next;
-        Node(int k, int v) : key(k), value(v), prev(nullptr), next(nullptr) {}
-    };
+void insert_at_head(int value) {
+    Node* newNode = new Node(value);
+    newNode->next = head;
+    head = newNode;
+}
+```
 
-    int cap;
-    unordered_map<int, Node*> mp;
-    Node *head, *tail; // dummy/sentinel nodes
+### Delete Node
 
-    void remove(Node* node) {
-        node->prev->next = node->next;
-        node->next->prev = node->prev;
-    }
+<div align="center">
+  <img src="images/sll-delete.gif" width="600" alt="Delete Node">
+  <p><strong>Deleting a node: O(n) time</strong></p>
+</div>
 
-    void insert_front(Node* node) {
-        node->next = head->next;
-        node->prev = head;
-        head->next->prev = node;
-        head->next = node;
-    }
+## Video Tutorial
 
-public:
-    LRUCache(int capacity) : cap(capacity) {
-        head = new Node(0, 0);
-        tail = new Node(0, 0);
-        head->next = tail;
-        tail->prev = head;
-    }
+<div align="center">
+  
+[![Understanding SLL](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
 
-    int get(int key) {
-        auto it = mp.find(key);
-        if (it == mp.end()) return -1;
-        Node* node = it->second;
-        remove(node);
-        insert_front(node);
-        return node->value;
-    }
+**Watch: Complete Singly Linked List Guide (20 minutes)**
 
-    void put(int key, int value) {
-        if (mp.count(key)) {
-            Node* node = mp[key];
-            node->value = value;
-            remove(node);
-            insert_front(node);
-        } else {
-            if ((int)mp.size() == cap) {
-                Node* lru = tail->prev;
-                remove(lru);
-                mp.erase(lru->key);
-                delete lru;
-            }
-            Node* node = new Node(key, value);
-            insert_front(node);
-            mp[key] = node;
-        }
-    }
+</div>
 
-    ~LRUCache() {
-        Node* cur = head;
-        while (cur) {
-            Node* nxt = cur->next;
-            delete cur;
-            cur = nxt;
-        }
-    }
-};
+## Complexity Comparison
+
+<div align="center">
+  <img src="images/complexity-chart.png" width="700" alt="Complexity Chart">
+</div>
+
 ```
 
 ---
 
-## 📘 References & Further Reading
+## 🎯 Quick Summary
 
-These resources go deeper into linked lists, time‑complexity analysis, and real‑world patterns:
+### What to Add to Your README:
 
-- GeeksforGeeks – *Singly Linked List Tutorial*  
-  https://www.geeksforgeeks.org/dsa/singly-linked-list-tutorial/
-- GeeksforGeeks – *Time and Space Complexity of Linked List*  
-  https://www.geeksforgeeks.org/dsa/time-and-space-complexity-of-linked-list/
-- Take U Forward – *Singly Linked List vs Doubly Linked List*  
-  https://takeuforward.org/linked-list/singly-linked-list-vs-doubly-linked-list/
-- GeeksforGeeks – *Applications, Advantages and Disadvantages of Doubly Linked List*  
-  https://www.geeksforgeeks.org/dsa/applications-advantages-and-disadvantages-of-doubly-linked-list/
-- Programiz – *Linked List Operations (Traverse, Insert, Delete)*  
-  https://www.programiz.com/dsa/linked-list-operations
-- Take U Forward – *Implement LRU Cache*  
-  https://takeuforward.org/data-structure/implement-lru-cache/
-- Interview Cake – *LRU Cache* (concept + diagram)  
-  https://www.interviewcake.com/concept/java/lru-cache
+```
+✅ Structural diagrams (PNG)
+✅ Operation animations (GIF)
+✅ Memory layout visualization
+✅ Comparison charts
+✅ Real-world example images
+✅ Video tutorial links
+✅ Code implementation screenshots
+✅ Complexity analysis graphs
+```
+
+### Image Tools:
+
+```
+Creating Diagrams:
+- Draw.io
+- Excalidraw
+- Mermaid (GitHub native)
+
+Creating GIFs:
+- Asciinema + ImageMagick
+- OBS Studio + FFmpeg
+- ScreenRecorder + Gifify
+
+Hosting:
+- GitHub Repository (/images folder)
+- Imgur
+- GitHub raw URLs
+```
 
 ---
 
--> إن وجدت أي خطأ أو أردت إضافة ميزة، لا تتردد في المساهمة
-Contributions are always welcome!
+## 🔗 Direct Links to Use
+
+**Add these links to your README:**
+
+```markdown
+### 📚 Resources
+
+- **VisuAlgo Linked Lists:** https://visualgo.net/en/list
+- **GeeksforGeeks:** https://www.geeksforgeeks.org/data-structures/linked-list/
+- **LeetCode Linked List:** https://leetcode.com/tag/linked-list/
+- **YouTube DSA Course:** https://www.youtube.com/results?search_query=data+structures+course
+
+### 🎨 Diagram Tools
+
+- **Draw.io:** https://draw.io/
+- **Excalidraw:** https://excalidraw.com/
+- **Mermaid Diagram:** https://mermaid.js.org/
+
+### 🎬 GIF Creation
+
+- **Asciinema:** https://asciinema.org/
+- **OBS Studio:** https://obsproject.com/
+- **FFmpeg:** https://ffmpeg.org/
+```
+
+---
+
+<div align="center">
+
+## 🎉 Now Your README Will Look Amazing!
+
+With images, GIFs, and videos, your linked list repository will be a complete learning resource.
+
+**Next Step:** Start creating your diagrams and record your GIFs!
+
+</div>
