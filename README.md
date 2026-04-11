@@ -6,7 +6,7 @@ A clean C++ implementation of **Singly Linked List (SLL)** and **Doubly Linked L
 
 ## Visual Concept — Singly Linked List
 
-![SLL Diagram]([sll_diagram.svg](https://claude.ai/public/artifacts/a0a1d77f-a6f8-4bde-9e77-b80abc96d5e3))
+[sll_diagram.svg](https://claude.ai/public/artifacts/a0a1d77f-a6f8-4bde-9e77-b80abc96d5e3)
 
 > The diagram above walks through five key ideas: node anatomy, how nodes chain together, `push_front`, `remove_first`, and `reverse` — all with the exact pointer logic from the code.
 
