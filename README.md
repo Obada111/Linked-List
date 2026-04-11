@@ -6,7 +6,213 @@ A clean C++ implementation of **Singly Linked List (SLL)** and **Doubly Linked L
 
 ## Visual Concept — Singly Linked List
 
-![SLL Diagram](sll_diagram.svg)
+![SLL Diagram](<svg viewBox="0 0 860 620" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="860" height="620" rx="16" fill="#0f1117"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       TITLE
+  ══════════════════════════════════════════════════════ -->
+  <text x="430" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#e2e8f0" letter-spacing="1">Singly Linked List — Visual Guide</text>
+  <line x1="60" y1="54" x2="800" y2="54" stroke="#2d3748" stroke-width="1.5"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 1 — ANATOMY OF A NODE
+  ══════════════════════════════════════════════════════ -->
+  <text x="60" y="82" font-size="13" font-weight="600" fill="#63b3ed">① Node anatomy</text>
+
+  <!-- node box -->
+  <rect x="200" y="92" width="100" height="44" rx="6" fill="#1a202c" stroke="#4299e1" stroke-width="1.8"/>
+  <line x1="260" y1="92" x2="260" y2="136" stroke="#4299e1" stroke-width="1.5"/>
+  <text x="230" y="119" text-anchor="middle" font-size="15" font-weight="700" fill="#90cdf4">42</text>
+  <text x="280" y="112" text-anchor="middle" font-size="10" fill="#68d391">next</text>
+  <text x="280" y="124" text-anchor="middle" font-size="10" fill="#68d391">●</text>
+
+  <!-- labels -->
+  <text x="230" y="150" text-anchor="middle" font-size="10" fill="#718096">data</text>
+  <text x="280" y="150" text-anchor="middle" font-size="10" fill="#718096">pointer</text>
+
+  <!-- struct code -->
+  <rect x="340" y="88" width="220" height="56" rx="6" fill="#171923" stroke="#2d3748" stroke-width="1"/>
+  <text x="352" y="104" font-size="10" fill="#9f7aea" font-family="Consolas, monospace">struct</text>
+  <text x="388" y="104" font-size="10" fill="#63b3ed" font-family="Consolas, monospace">Node {</text>
+  <text x="362" y="118" font-size="10" fill="#68d391" font-family="Consolas, monospace">int   data;</text>
+  <text x="362" y="132" font-size="10" fill="#68d391" font-family="Consolas, monospace">Node* next;</text>
+  <text x="352" y="138" font-size="10" fill="#63b3ed" font-family="Consolas, monospace">};</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 2 — FULL LIST CHAIN
+  ══════════════════════════════════════════════════════ -->
+  <text x="60" y="178" font-size="13" font-weight="600" fill="#63b3ed">② How nodes form a chain</text>
+
+  <!-- head label -->
+  <text x="104" y="212" text-anchor="middle" font-size="11" fill="#f6ad55" font-weight="600">head</text>
+  <line x1="104" y1="215" x2="104" y2="228" stroke="#f6ad55" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+
+  <!-- node 1 -->
+  <rect x="66" y="230" width="90" height="44" rx="6" fill="#1a202c" stroke="#4299e1" stroke-width="1.8"/>
+  <line x1="116" y1="230" x2="116" y2="274" stroke="#4299e1" stroke-width="1.5"/>
+  <text x="91" y="257" text-anchor="middle" font-size="16" font-weight="700" fill="#90cdf4">5</text>
+  <text x="134" y="253" text-anchor="middle" font-size="10" fill="#68d391">●</text>
+  <!-- arrow -->
+  <line x1="156" y1="252" x2="188" y2="252" stroke="#68d391" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+  <!-- node 2 -->
+  <rect x="190" y="230" width="90" height="44" rx="6" fill="#1a202c" stroke="#4299e1" stroke-width="1.8"/>
+  <line x1="240" y1="230" x2="240" y2="274" stroke="#4299e1" stroke-width="1.5"/>
+  <text x="215" y="257" text-anchor="middle" font-size="16" font-weight="700" fill="#90cdf4">10</text>
+  <text x="258" y="253" text-anchor="middle" font-size="10" fill="#68d391">●</text>
+  <line x1="280" y1="252" x2="312" y2="252" stroke="#68d391" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+  <!-- node 3 -->
+  <rect x="314" y="230" width="90" height="44" rx="6" fill="#1a202c" stroke="#4299e1" stroke-width="1.8"/>
+  <line x1="364" y1="230" x2="364" y2="274" stroke="#4299e1" stroke-width="1.5"/>
+  <text x="339" y="257" text-anchor="middle" font-size="16" font-weight="700" fill="#90cdf4">20</text>
+  <text x="382" y="253" text-anchor="middle" font-size="10" fill="#68d391">●</text>
+  <line x1="404" y1="252" x2="436" y2="252" stroke="#68d391" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+  <!-- node 4 -->
+  <rect x="438" y="230" width="90" height="44" rx="6" fill="#1a202c" stroke="#4299e1" stroke-width="1.8"/>
+  <line x1="488" y1="230" x2="488" y2="274" stroke="#4299e1" stroke-width="1.5"/>
+  <text x="463" y="257" text-anchor="middle" font-size="16" font-weight="700" fill="#90cdf4">30</text>
+  <text x="506" y="253" text-anchor="middle" font-size="10" fill="#e53e3e">NULL</text>
+  <!-- NULL cross -->
+  <line x1="524" y1="246" x2="536" y2="258" stroke="#e53e3e" stroke-width="1.8"/>
+  <line x1="536" y1="246" x2="524" y2="258" stroke="#e53e3e" stroke-width="1.8"/>
+
+  <!-- tail label -->
+  <text x="483" y="296" text-anchor="middle" font-size="11" fill="#f6ad55" font-weight="600">tail</text>
+  <line x1="483" y1="280" x2="483" y2="293" stroke="#f6ad55" stroke-width="1.5"/>
+
+  <!-- index labels -->
+  <text x="111" y="284" text-anchor="middle" font-size="9" fill="#718096">[0]</text>
+  <text x="235" y="284" text-anchor="middle" font-size="9" fill="#718096">[1]</text>
+  <text x="359" y="284" text-anchor="middle" font-size="9" fill="#718096">[2]</text>
+  <text x="483" y="284" text-anchor="middle" font-size="9" fill="#718096">[3]</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 3 — PUSH_FRONT
+  ══════════════════════════════════════════════════════ -->
+  <line x1="60" y1="308" x2="800" y2="308" stroke="#2d3748" stroke-width="1"/>
+  <text x="60" y="328" font-size="13" font-weight="600" fill="#63b3ed">③ push_front(1)  — O(1)</text>
+
+  <!-- new node -->
+  <rect x="66" y="336" width="90" height="44" rx="6" fill="#22543d" stroke="#68d391" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="116" y1="336" x2="116" y2="380" stroke="#68d391" stroke-width="1.5"/>
+  <text x="91" y="363" text-anchor="middle" font-size="16" font-weight="700" fill="#9ae6b4">1</text>
+  <text x="134" y="359" text-anchor="middle" font-size="10" fill="#68d391">●</text>
+  <text x="91" y="390" text-anchor="middle" font-size="9" fill="#68d391">NEW</text>
+
+  <!-- arrow to old head -->
+  <line x1="156" y1="358" x2="210" y2="358" stroke="#68d391" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowGreen)"/>
+
+  <!-- old head -->
+  <rect x="212" y="336" width="90" height="44" rx="6" fill="#1a202c" stroke="#4299e1" stroke-width="1.8"/>
+  <line x1="262" y1="336" x2="262" y2="380" stroke="#4299e1" stroke-width="1.5"/>
+  <text x="237" y="363" text-anchor="middle" font-size="16" font-weight="700" fill="#90cdf4">5</text>
+  <text x="280" y="359" text-anchor="middle" font-size="10" fill="#68d391">●</text>
+  <text x="310" y="363" font-size="10" fill="#718096">→ ...</text>
+
+  <!-- head arrow update -->
+  <text x="500" y="348" font-size="10" fill="#9f7aea" font-family="Consolas, monospace">node-&gt;next = head;</text>
+  <text x="500" y="364" font-size="10" fill="#9f7aea" font-family="Consolas, monospace">head = node;</text>
+  <text x="500" y="380" font-size="10" fill="#718096">head pointer moves to new node</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 4 — REMOVE / DELETE
+  ══════════════════════════════════════════════════════ -->
+  <line x1="60" y1="408" x2="800" y2="408" stroke="#2d3748" stroke-width="1"/>
+  <text x="60" y="428" font-size="13" font-weight="600" fill="#63b3ed">④ remove_first(20)  — O(n)</text>
+
+  <!-- traverse label -->
+  <text x="66" y="448" font-size="10" fill="#718096">traverse until prev.next.data == 20</text>
+
+  <!-- node A -->
+  <rect x="66" y="455" width="80" height="40" rx="6" fill="#1a202c" stroke="#4299e1" stroke-width="1.8"/>
+  <line x1="106" y1="455" x2="106" y2="495" stroke="#4299e1" stroke-width="1.5"/>
+  <text x="86" y="480" text-anchor="middle" font-size="14" font-weight="700" fill="#90cdf4">5</text>
+  <text x="120" y="477" text-anchor="middle" font-size="10" fill="#68d391">●</text>
+
+  <!-- arrow -->
+  <line x1="146" y1="475" x2="170" y2="475" stroke="#68d391" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+  <!-- node B  (prev) -->
+  <rect x="172" y="455" width="80" height="40" rx="6" fill="#1a202c" stroke="#f6ad55" stroke-width="2"/>
+  <line x1="212" y1="455" x2="212" y2="495" stroke="#f6ad55" stroke-width="1.5"/>
+  <text x="192" y="480" text-anchor="middle" font-size="14" font-weight="700" fill="#90cdf4">10</text>
+  <text x="226" y="477" text-anchor="middle" font-size="10" fill="#68d391">●</text>
+  <text x="212" y="508" text-anchor="middle" font-size="9" fill="#f6ad55">prev</text>
+
+  <!-- arrow to target -->
+  <line x1="252" y1="475" x2="276" y2="475" stroke="#68d391" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+  <!-- node C (target — 20) -->
+  <rect x="278" y="455" width="80" height="40" rx="6" fill="#742a2a" stroke="#e53e3e" stroke-width="2"/>
+  <line x1="318" y1="455" x2="318" y2="495" stroke="#e53e3e" stroke-width="1.5"/>
+  <text x="298" y="480" text-anchor="middle" font-size="14" font-weight="700" fill="#fc8181">20</text>
+  <text x="332" y="477" text-anchor="middle" font-size="10" fill="#68d391">●</text>
+  <text x="298" y="508" text-anchor="middle" font-size="9" fill="#e53e3e">DELETE</text>
+
+  <!-- arrow from target to next -->
+  <line x1="358" y1="475" x2="382" y2="475" stroke="#68d391" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+  <!-- node D -->
+  <rect x="384" y="455" width="80" height="40" rx="6" fill="#1a202c" stroke="#4299e1" stroke-width="1.8"/>
+  <line x1="424" y1="455" x2="424" y2="495" stroke="#4299e1" stroke-width="1.5"/>
+  <text x="404" y="480" text-anchor="middle" font-size="14" font-weight="700" fill="#90cdf4">30</text>
+  <text x="438" y="477" text-anchor="middle" font-size="10" fill="#e53e3e">NULL</text>
+
+  <!-- bypass arrow -->
+  <path d="M 252 467 Q 298 440 382 467" stroke="#68d391" stroke-width="2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrowGreen)"/>
+  <text x="298" y="444" text-anchor="middle" font-size="9" fill="#9ae6b4">prev→next = cur→next</text>
+
+  <!-- code -->
+  <text x="500" y="465" font-size="10" fill="#9f7aea" font-family="Consolas, monospace">prev-&gt;next = cur-&gt;next;</text>
+  <text x="500" y="480" font-size="10" fill="#9f7aea" font-family="Consolas, monospace">delete cur;</text>
+  <text x="500" y="496" font-size="10" fill="#718096">node is unlinked, then freed</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 5 — REVERSE
+  ══════════════════════════════════════════════════════ -->
+  <line x1="60" y1="524" x2="800" y2="524" stroke="#2d3748" stroke-width="1"/>
+  <text x="60" y="544" font-size="13" font-weight="600" fill="#63b3ed">⑤ reverse()  — O(n), in-place pointer flip</text>
+
+  <!-- before -->
+  <text x="66" y="562" font-size="10" fill="#718096">Before:</text>
+  <text x="108" y="562" font-size="10" fill="#90cdf4">5 → 10 → 20 → NULL</text>
+  <!-- after -->
+  <text x="66" y="582" font-size="10" fill="#718096">After: </text>
+  <text x="108" y="582" font-size="10" fill="#9ae6b4">20 → 10 → 5 → NULL</text>
+
+  <!-- code explanation -->
+  <text x="340" y="556" font-size="10" fill="#9f7aea" font-family="Consolas, monospace">prev = NULL; cur = head;</text>
+  <text x="340" y="570" font-size="10" fill="#9f7aea" font-family="Consolas, monospace">while (cur) {</text>
+  <text x="356" y="584" font-size="10" fill="#9f7aea" font-family="Consolas, monospace">next=cur-&gt;next; cur-&gt;next=prev;</text>
+  <text x="356" y="598" font-size="10" fill="#9f7aea" font-family="Consolas, monospace">prev=cur; cur=next; }</text>
+  <text x="340" y="612" font-size="10" fill="#9f7aea" font-family="Consolas, monospace">head = prev;</text>
+
+  <!-- complexity table -->
+  <rect x="620" y="536" width="220" height="70" rx="6" fill="#171923" stroke="#2d3748"/>
+  <text x="730" y="552" text-anchor="middle" font-size="10" font-weight="600" fill="#e2e8f0">Complexity Quick Ref</text>
+  <text x="630" y="566" font-size="9" fill="#68d391">push_front / push_back</text><text x="828" y="566" text-anchor="end" font-size="9" fill="#faf089">O(1)</text>
+  <text x="630" y="579" font-size="9" fill="#68d391">insert_at / erase_at</text>     <text x="828" y="579" text-anchor="end" font-size="9" fill="#faf089">O(n)</text>
+  <text x="630" y="592" font-size="9" fill="#68d391">remove_first / contains</text>  <text x="828" y="592" text-anchor="end" font-size="9" fill="#faf089">O(n)</text>
+  <text x="630" y="605" font-size="9" fill="#68d391">reverse / max_value</text>      <text x="828" y="605" text-anchor="end" font-size="9" fill="#faf089">O(n)</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       ARROW MARKERS
+  ══════════════════════════════════════════════════════ -->
+  <defs>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#68d391"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#f6ad55"/>
+    </marker>
+  </defs>
+
+</svg>)
 
 > The diagram above walks through five key ideas: node anatomy, how nodes chain together, `push_front`, `remove_first`, and `reverse` — all with the exact pointer logic from the code.
 
