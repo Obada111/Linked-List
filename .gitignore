@@ -1,0 +1,19 @@
+# C++
+*.exe
+*.o
+*.obj
+*.out
+*.ilk
+*.pdb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+.DS_Store
+Desktop.ini
